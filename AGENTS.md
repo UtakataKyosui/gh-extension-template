@@ -418,3 +418,22 @@ A successful implementation must be understandable to a human developer and pred
 Do not optimize solely for code generation speed.
 
 Prioritize explicit contracts, testable behavior, safe automation, and maintainability.
+
+## Append Context
+
+### Prior Art and Design Rationale
+
+Before introducing new architectural conventions or CLI contracts, consult `docs/research-and-differentiation.md`.
+
+This document records:
+
+- Existing projects and specifications that influenced the design.
+- Features adopted, adapted, or intentionally excluded.
+- Differentiation goals and their current evidence.
+- Unresolved compatibility and licensing considerations.
+
+Do not claim that a feature is unique without evidence.
+
+Do not copy third-party implementations without checking their licenses and recording attribution.
+
+Treat this research document as historical and contextual information, not as the authoritative implementation contract.
