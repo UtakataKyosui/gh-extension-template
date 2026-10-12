@@ -158,7 +158,6 @@ flowchart LR
 │   ├── requirements.md
 │   ├── cli-contract.md
 │   ├── architecture.md
-│   ├── implementation-plan.md
 │   └── decisions/
 ├── .agents/skills/gh-extension-development/SKILL.md
 ├── .github/workflows/
@@ -474,34 +473,11 @@ cd gh-my-tool
 - Logging/Tracing導入は任意。JSON結果のstdoutを汚さないことを最優先とする。
 - エラーの文字列表現は安定APIではない。AgentはExit Code・error.code・side_effectに依存する。
 
-## 14. 決定が必要な論点（ADR候補）
+## 14. 設計判断と実装作業の追跡
 
-| ADR候補 | 問題 | 暫定案 |
-|---|---|---|
-| 0001: Go/Cobra | CLIの標準構成 | Go + Cobra |
-| 0002: Output envelope | `gh --json fields`との共存 | MVPは`--format json` |
-| 0003: GitHub adapter | `go-gh`か`net/http`か | Portを先に固定 |
-| 0004: Parse error routing | CobraのエラーをJSON化する方式 | Runtimeで捕捉し1回だけRender |
-| 0005: Contract versioning | Schemaと製品版の独立 | `schema_version`を独立管理 |
-| 0006: Write safety | 送信後のtimeout | `unknown`＋照合優先 |
+未決定の設計判断は Go/Cobra [#2](https://github.com/UtakataKyosui/gh-extension-template/issues/2)、出力契約・版管理 [#1](https://github.com/UtakataKyosui/gh-extension-template/issues/1)、GitHub Adapter・書込安全性 [#5](https://github.com/UtakataKyosui/gh-extension-template/issues/5)、パースエラー [#4](https://github.com/UtakataKyosui/gh-extension-template/issues/4)、JSON互換 [#13](https://github.com/UtakataKyosui/gh-extension-template/issues/13) で追跡する。確定した重要な判断は `docs/decisions/` にADRとして記録する（現時点では未作成）。
 
-## 15. 実装順序とレビューゲート
-
-```mermaid
-flowchart TD
-    R["FR/NFRの確認"] --> C["外部CLI契約とSchemaを固定"]
-    C --> B["Process Boundary / CLI Runtime"]
-    B --> U["Domain / App / Port"]
-    U --> H["hello + Fake Issue Create"]
-    H --> T["契約テスト / E2E"]
-    T --> Q{"契約違反なし?"}
-    Q -->|No| B
-    Q -->|Yes| D["AGENTS / Skill / CI / 初期化"]
-    D --> F["新規gh拡張生成のスモークテスト"]
-    F --> M["MVP完成"]
-```
-
-各段階の完了条件は [requirements.md](./requirements.md) のFR/NFRおよびDefinition of Doneに対応付ける。`docs/implementation-plan.md` は個別タスク・順番・検証成果物の正本とし、本書では内部構造を中心に扱う。
+実装順序・依存関係・検証成果物は[READMEのIssue一覧](../README.md#work-tracking)から参照する。本書は内部構造と責務の正本とする。
 
 ---
 

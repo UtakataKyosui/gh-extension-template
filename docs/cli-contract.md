@@ -338,15 +338,9 @@ func TestJSONOutputContract(t *testing.T) {
 - 互換性を破る変更にはADR、移行ガイド、契約テストの更新が必要。
 - 出力の順序や空白に依存する利用者を増やさない。機械側にはJSONパースを推奨する。
 
-## 11. 仕様の残課題
+## 11. 仕様検討の追跡
 
-1. `--format json`と `gh --json fields` を両方採用する際のUXと後方互換。
-2. コマンド別の`data`フィールドのSchemaの配置方法。
-3. JSONモードのパースエラーをCobraの標準処理とどう統合するか。
-4. `side_effect=applied`の一部成功/複数操作への拡張が必要か。
-5. `suggested_action`を自然言語だけにするか、構造化アクションを追加するか。
-6. Rate limitに対する`retry_after`の型と採用条件。
-7. JSON Schemaの`additionalProperties`許容範囲とバージョン運用。
+未決定事項はJSON互換 [#13](https://github.com/UtakataKyosui/gh-extension-template/issues/13)、コマンド別Schema・未知フィールド・版管理 [#1](https://github.com/UtakataKyosui/gh-extension-template/issues/1)、Cobraパースエラー [#4](https://github.com/UtakataKyosui/gh-extension-template/issues/4)、一部成功・リカバリー情報・retry_after [#14](https://github.com/UtakataKyosui/gh-extension-template/issues/14) へ移した。決定後は本書・Schema・契約テストを更新する。
 
 ## 12. 参考情報
 
