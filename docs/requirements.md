@@ -172,22 +172,9 @@ Feature: 機械可読なCLI応答
 | 書込成功 | 妥当 | 0 | `applied` | あり |
 | 書込後の応答ロスト | 妥当 | 8 | `unknown` | 不明 |
 
-## 7. 要件の依存関係
+## 7. 作業の追跡
 
-```mermaid
-flowchart TD
-    A["要件・スコープ確定"] --> B["公開CLI契約を固定"]
-    B --> C["共通出力・エラー実装"]
-    B --> D["契約テスト作成"]
-    C --> E["サンプルコマンド"]
-    D --> E
-    E --> F["CI / Agent Skill"]
-    F --> G["初期化・配布"]
-    G --> H["新規テンプレートE2E"]
-    H --> I{"受入条件を満たす?"}
-    I -->|No| B
-    I -->|Yes| J["MVP完了"]
-```
+実装タスク・順序・依存関係は[READMEのIssue一覧](../README.md#work-tracking)で追跡する。本書のスコープ・FR/NFR・受入条件は要件の正本として維持する。
 
 ## 8. Definition of Done
 
@@ -200,16 +187,9 @@ flowchart TD
 - [ ] `README.md`、`AGENTS.md`、`cli-contract.md`と実際の実装が一致する。
 - [ ] CIが緑であり、リリースの手順が再現可能である。
 
-## 9. 未決定事項・変更管理
+## 9. 変更管理
 
-| 論点 | 暫定判断 | 決定タイミング |
-|---|---|---|
-| サンプルコマンド名 | `hello`, `issue create`（仮） | Cobra導入前 |
-| GitHub APIクライアント | `go-gh` または分離したAPI adapter | architecture確定時 |
-| `--json fields`互換 | MVP外。`--format json`を使用 | Post-MVP |
-| JSON Schemaバージョン | 契約v1としドキュメントで管理 | contract実装時 |
-| Rate-limit retry | 自動再試行はMVP外 | Post-MVP |
-| プラットフォーム行列 | 公式precompileを基準に検証 | CI実装時 |
+未決定事項は、サンプル名 [#2](https://github.com/UtakataKyosui/gh-extension-template/issues/2)、APIクライアント [#5](https://github.com/UtakataKyosui/gh-extension-template/issues/5)、JSON互換 [#13](https://github.com/UtakataKyosui/gh-extension-template/issues/13)、Schema・版管理 [#1](https://github.com/UtakataKyosui/gh-extension-template/issues/1)、再試行 [#14](https://github.com/UtakataKyosui/gh-extension-template/issues/14)、プラットフォーム行列 [#8](https://github.com/UtakataKyosui/gh-extension-template/issues/8) で追跡する。
 
 公開契約への変更では仕様・schema・テスト・変更履歴を同時に更新する。破壊的変更はレビューを必須とする。
 

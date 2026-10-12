@@ -22,8 +22,8 @@ Read the relevant documentation before making changes.
 | `docs/requirements.md` | Product requirements and acceptance criteria |
 | `docs/cli-contract.md` | Public CLI behavior and output contracts |
 | `docs/architecture.md` | Internal architecture and responsibilities |
-| `docs/implementation-plan.md` | Implementation order and milestones |
-| `docs/decisions/` | Architectural decisions |
+| [GitHub Issues](https://github.com/UtakataKyosui/gh-extension-template/issues) | Implementation work, order, dependencies, and unresolved decisions |
+| `docs/decisions/` (created as decisions are accepted) | Architectural decisions |
 | `README.md` | Project overview and user-facing documentation |
 
 Do not treat conversation notes or historical design proposals as authoritative specifications.

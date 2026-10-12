@@ -112,122 +112,34 @@ Avoid introducing custom behavior when an existing `gh` convention already provi
 
 Some implementation details may change during architecture design.
 
-## Planned Features
-
-### CLI Runtime
-
-- Shared response formatting
-- Structured errors
-- Documented exit codes
-- JSON and text output
-- Input validation
-- Non-interactive execution
-- Dry-run execution
-- Side-effect reporting
-- Machine-readable command metadata
-
-### Development Tooling
-
-- Go project scaffolding
-- Standard command implementation patterns
-- Unit and contract tests
-- Golden tests for CLI output
-- Automated linting and formatting
-- CI workflows
-- Release automation
-
-### Agent Development Support
-
-- Repository-wide instructions through `AGENTS.md`
-- Reusable Agent Skills
-- Clear implementation and testing conventions
-- Documentation of architectural decisions
-- Explicit validation commands
-
-## CLI Response Example
-
-The following examples illustrate the intended design. The final response schema has not yet been fixed.
-
-### Success
-
-```json
-{
-  "ok": true,
-  "data": {
-    "number": 42,
-    "url": "https://github.com/example/repo/issues/42"
-  },
-  "error": null
-}
-```
-
-### Failure
-
-```json
-{
-  "ok": false,
-  "data": null,
-  "error": {
-    "code": "AUTH_REQUIRED",
-    "message": "GitHub authentication is required.",
-    "retryable": false,
-    "suggested_action": "gh auth login",
-    "side_effect": "none"
-  }
-}
-```
-
-CLI exit codes will be defined separately from application-level error identifiers.
-
-Their mapping must remain documented and testable.
-
-## Planned Repository Structure
-
-```text
-.
-├── .agents/
-│   └── skills/
-├── .github/
-│   ├── ISSUE_TEMPLATE/
-│   └── workflows/
-├── cmd/
-├── internal/
-│   ├── cli/
-│   └── github/
-├── schemas/
-├── test/
-│   ├── contract/
-│   └── golden/
-├── docs/
-│   ├── requirements.md
-│   ├── cli-contract.md
-│   ├── architecture.md
-│   ├── implementation-plan.md
-│   └── decisions/
-├── AGENTS.md
-├── CONTRIBUTING.md
-├── README.md
-├── go.mod
-└── main.go
-```
-
-This structure is provisional and may evolve during implementation.
-
 ## Getting Started
 
-The template is currently in the design and implementation planning stage.
+The repository currently contains design documents and development instructions; the Go scaffold and runtime are not implemented yet. Verified setup commands will be added when template initialization is implemented.
 
-Once the initial implementation is complete, users will be able to:
+For the proposed response examples and output rules, see [the CLI contract](docs/cli-contract.md). For package responsibilities and the proposed layout, see [the architecture](docs/architecture.md).
 
-1. Create a repository from this GitHub template.
-2. Initialize its project name and Go module path.
-3. Install the required development tools.
-4. Implement commands using the shared CLI infrastructure.
-5. Run automated quality checks.
-6. Install and test the extension locally using `gh`.
-7. Publish precompiled releases.
+## Work Tracking
 
-Exact setup commands will be documented after the scaffolding process is implemented and verified.
+Implementation work, unresolved decisions, acceptance criteria, and dependencies are tracked in GitHub Issues. Requirements, public CLI behavior, and internal architecture remain authoritative in the documents below.
+
+| Phase | Issue |
+| --- | --- |
+| MVP | [CLI契約・JSON Schemaの初版と互換性方針を確定する (#1)](https://github.com/UtakataKyosui/gh-extension-template/issues/1) |
+| MVP | [Go/Cobraの実行基盤とパッケージ構成を実装する (#2)](https://github.com/UtakataKyosui/gh-extension-template/issues/2) |
+| MVP | [共通レスポンス・構造化エラー・終了コードを実装する (#3)](https://github.com/UtakataKyosui/gh-extension-template/issues/3) |
+| MVP | [Cobraのパースエラーと非対話動作を共通Runtimeへ統合する (#4)](https://github.com/UtakataKyosui/gh-extension-template/issues/4) |
+| MVP | [GitHub Port・Fake AdapterとAPIエラーの正規化を実装する (#5)](https://github.com/UtakataKyosui/gh-extension-template/issues/5) |
+| MVP | [読取サンプルとdry-run対応の書込サンプルを実装する (#6)](https://github.com/UtakataKyosui/gh-extension-template/issues/6) |
+| MVP | [CLI契約・Golden・gh拡張互換性テストを整備する (#7)](https://github.com/UtakataKyosui/gh-extension-template/issues/7) |
+| MVP | [format・vet・test・build・lintを実行するCIを追加する (#8)](https://github.com/UtakataKyosui/gh-extension-template/issues/8) |
+| MVP | [テンプレートの名前・Go module初期化とfresh-template E2Eを実装する (#9)](https://github.com/UtakataKyosui/gh-extension-template/issues/9) |
+| MVP | [precompiledリリースの雛形と配布検証手順を整備する (#10)](https://github.com/UtakataKyosui/gh-extension-template/issues/10) |
+| MVP | [開発Skill・CONTRIBUTING・Issue/PRテンプレートを整備する (#11)](https://github.com/UtakataKyosui/gh-extension-template/issues/11) |
+| Post-MVP | [コマンド能力を公開するJSON manifestを設計・実装する (#12)](https://github.com/UtakataKyosui/gh-extension-template/issues/12) |
+| Post-MVP | [gh式のJSONフィールド投影・jq・template互換レイヤーを検討する (#13)](https://github.com/UtakataKyosui/gh-extension-template/issues/13) |
+| Post-MVP | [副作用付き応答の拡張と構造化リカバリー情報を検討する (#14)](https://github.com/UtakataKyosui/gh-extension-template/issues/14) |
+| Post-MVP / Evaluation | [Post-MVPの文書生成・任意UI・API例の採否を評価する (#15)](https://github.com/UtakataKyosui/gh-extension-template/issues/15) |
+| Pre-release validation | [差別化の実証・OSS帰属・外部仕様の適合範囲を検証する (#16)](https://github.com/UtakataKyosui/gh-extension-template/issues/16) |
 
 ## Documentation
 
@@ -237,8 +149,8 @@ Exact setup commands will be documented after the scaffolding process is impleme
 | `docs/requirements.md` | Functional and non-functional requirements |
 | `docs/cli-contract.md` | CLI output and behavior contracts |
 | `docs/architecture.md` | Architecture and module responsibilities |
-| `docs/implementation-plan.md` | Development phases and milestones |
-| `docs/decisions/` | Architecture Decision Records |
+| [GitHub Issues](https://github.com/UtakataKyosui/gh-extension-template/issues) | Implementation work, decisions, and dependencies |
+| `docs/research-and-differentiation.md` | Prior art and design rationale |
 
 ## Project Status
 
@@ -259,4 +171,4 @@ Its design goals and preliminary conventions are documented, but runtime behavio
 
 ## License
 
-To be determined before public release.
+See [LICENSE](LICENSE). OSS attribution and release documentation checks are tracked in [#16](https://github.com/UtakataKyosui/gh-extension-template/issues/16).
