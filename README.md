@@ -114,7 +114,7 @@ Some implementation details may change during architecture design.
 
 ## Getting Started
 
-The repository currently contains design documents and development instructions; the Go scaffold and runtime are not implemented yet. Verified setup commands will be added when template initialization is implemented.
+The repository currently contains development instructions, and the design specifications are maintained as GitHub Issues (see [Documentation](#documentation)); the Go scaffold and runtime are not implemented yet. Verified setup commands will be added when template initialization is implemented.
 
 For the proposed response examples and output rules, see [the CLI contract (#19)](https://github.com/UtakataKyosui/gh-extension-template/issues/19). For package responsibilities and the proposed layout, see [the architecture (#20)](https://github.com/UtakataKyosui/gh-extension-template/issues/20).
 
