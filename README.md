@@ -64,7 +64,7 @@ Define CLI behavior before implementing commands.
 
 Each command must conform to documented contracts covering input validation, output formats, error handling, and exit status.
 
-The authoritative contract is maintained in `docs/cli-contract.md`.
+The authoritative contract is maintained in [the CLI contract specification (#19)](https://github.com/UtakataKyosui/gh-extension-template/issues/19).
 
 ### Human and Agent Parity
 
@@ -114,13 +114,13 @@ Some implementation details may change during architecture design.
 
 ## Getting Started
 
-The repository currently contains design documents and development instructions; the Go scaffold and runtime are not implemented yet. Verified setup commands will be added when template initialization is implemented.
+The repository currently contains development instructions, and the design specifications are maintained as GitHub Issues (see [Documentation](#documentation)); the Go scaffold and runtime are not implemented yet. Verified setup commands will be added when template initialization is implemented.
 
-For the proposed response examples and output rules, see [the CLI contract](docs/cli-contract.md). For package responsibilities and the proposed layout, see [the architecture](docs/architecture.md).
+For the proposed response examples and output rules, see [the CLI contract (#19)](https://github.com/UtakataKyosui/gh-extension-template/issues/19). For package responsibilities and the proposed layout, see [the architecture (#20)](https://github.com/UtakataKyosui/gh-extension-template/issues/20).
 
 ## Work Tracking
 
-Implementation work, unresolved decisions, acceptance criteria, and dependencies are tracked in GitHub Issues. Requirements, public CLI behavior, and internal architecture remain authoritative in the documents below.
+Implementation work, unresolved decisions, acceptance criteria, and dependencies are tracked in GitHub Issues. Requirements, public CLI behavior, internal architecture, and design rationale are maintained as `spec` Epics and their sub-issues, listed under [Documentation](#documentation).
 
 | Phase | Issue |
 | --- | --- |
@@ -146,11 +146,12 @@ Implementation work, unresolved decisions, acceptance criteria, and dependencies
 | Document | Purpose |
 | --- | --- |
 | `AGENTS.md` | Development instructions for Coding Agents |
-| `docs/requirements.md` | Functional and non-functional requirements |
-| `docs/cli-contract.md` | CLI output and behavior contracts |
-| `docs/architecture.md` | Architecture and module responsibilities |
+| [Epic #18: 要件定義](https://github.com/UtakataKyosui/gh-extension-template/issues/18) | Functional and non-functional requirements |
+| [Epic #19: CLI外部契約](https://github.com/UtakataKyosui/gh-extension-template/issues/19) | CLI output and behavior contracts |
+| [Epic #20: アーキテクチャ設計](https://github.com/UtakataKyosui/gh-extension-template/issues/20) | Architecture and module responsibilities |
+| [Epic #21: 先行調査・設計根拠・差別化分析](https://github.com/UtakataKyosui/gh-extension-template/issues/21) | Prior art and design rationale |
 | [GitHub Issues](https://github.com/UtakataKyosui/gh-extension-template/issues) | Implementation work, decisions, and dependencies |
-| `docs/research-and-differentiation.md` | Prior art and design rationale |
+| [Milestones](https://github.com/UtakataKyosui/gh-extension-template/milestones) | MVP, Post-MVP, and pre-release validation scope |
 
 ## Project Status
 

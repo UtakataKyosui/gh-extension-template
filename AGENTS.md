@@ -19,12 +19,14 @@ Read the relevant documentation before making changes.
 
 | Document | Responsibility |
 | --- | --- |
-| `docs/requirements.md` | Product requirements and acceptance criteria |
-| `docs/cli-contract.md` | Public CLI behavior and output contracts |
-| `docs/architecture.md` | Internal architecture and responsibilities |
+| [Epic #18: 要件定義](https://github.com/UtakataKyosui/gh-extension-template/issues/18) and its spec sub-issues | Product requirements and acceptance criteria |
+| [Epic #19: CLI外部契約](https://github.com/UtakataKyosui/gh-extension-template/issues/19) and its spec sub-issues | Public CLI behavior and output contracts |
+| [Epic #20: アーキテクチャ設計](https://github.com/UtakataKyosui/gh-extension-template/issues/20) and its spec sub-issues | Internal architecture and responsibilities |
 | [GitHub Issues](https://github.com/UtakataKyosui/gh-extension-template/issues) | Implementation work, order, dependencies, and unresolved decisions |
 | `docs/decisions/` (created as decisions are accepted) | Architectural decisions |
 | `README.md` | Project overview and user-facing documentation |
+
+Specifications are maintained as GitHub Issues labeled `spec`. Each Epic links its spec sub-issues; edit the relevant issue body to change a specification and record the reason in a comment. Keep spec issues open while they remain authoritative.
 
 Do not treat conversation notes or historical design proposals as authoritative specifications.
 
@@ -62,7 +64,7 @@ Use the following architectural responsibilities as a starting point:
 - `test/contract/`: CLI contract and compatibility tests.
 - `test/golden/`: Expected CLI output fixtures.
 
-The final structure is governed by `docs/architecture.md`.
+The final structure is governed by the architecture specification ([#20](https://github.com/UtakataKyosui/gh-extension-template/issues/20)).
 
 Do not introduce dependencies between packages that violate documented architectural boundaries.
 
@@ -81,7 +83,7 @@ Business logic should not directly depend on terminal formatting.
 
 ## 3. CLI Interface Contract
 
-The public CLI contract is defined in `docs/cli-contract.md`.
+The public CLI contract is defined in the CLI contract specification ([#19](https://github.com/UtakataKyosui/gh-extension-template/issues/19)).
 
 This file is the authoritative source for:
 
@@ -423,9 +425,9 @@ Prioritize explicit contracts, testable behavior, safe automation, and maintaina
 
 ### Prior Art and Design Rationale
 
-Before introducing new architectural conventions or CLI contracts, consult `docs/research-and-differentiation.md`.
+Before introducing new architectural conventions or CLI contracts, consult the research specification ([#21](https://github.com/UtakataKyosui/gh-extension-template/issues/21)).
 
-This document records:
+It records:
 
 - Existing projects and specifications that influenced the design.
 - Features adopted, adapted, or intentionally excluded.
